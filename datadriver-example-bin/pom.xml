@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>datadriver-example-bin</artifactId>
+    <packaging>war</packaging>
+    <version>${example.version}</version>
+    <name>datadriver-example-bin</name>
+    <description>打包运行模块</description>
+    <parent>
+        <artifactId>datadriver-spring-boot-example-root</artifactId>
+        <groupId>com.datadriver.boot</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <build>
+        <finalName>datadriver-example-bin</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.datadriver.WebApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- maven打包的时候告诉maven不需要web.xml,否刚会报找不到web.xml错误 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+        <!--配置Maven 对resource文件 过滤 -->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <excludes>
+                    <exclude>config/</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+            <!--datadriver-config profile-->
+            <resource>
+                <directory>src/main/resources/config/${package.environment}</directory>
+            </resource>
+        </resources>
+    </build>
+    <dependencies>
+        <!-- datadriver -->
+        <dependency>
+            <groupId>com.datadriver.boot</groupId>
+            <artifactId>datadriver-example-student</artifactId>
+            <version>${example.version}</version>
+        </dependency>
+    </dependencies>
+    <!-- Env Config -->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <!-- default -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <package.environment>dev</package.environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>online</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <package.environment>online</package.environment>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

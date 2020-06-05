@@ -1,0 +1,11 @@
+{
+  "STUDENT": {
+    "STUDENTNAME": "姓名",
+    "STUDENTAGE": "年龄",
+    "ENROLLMENTTIME": "入学时间",
+    "REMARK": "备注",
+    "VALID": {
+      "STUDENTNAME_NULL": "姓名必填"
+    }
+  }
+}

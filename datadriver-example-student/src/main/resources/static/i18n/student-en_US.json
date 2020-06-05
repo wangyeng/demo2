@@ -1,0 +1,11 @@
+{
+  "STUDENT": {
+    "STUDENTNAME": "Name",
+    "STUDENTAGE": "Age",
+    "ENROLLMENTTIME": "Enrollment time",
+    "REMARK": "Remark",
+    "VALID": {
+      "STUDENTNAME_NULL": "Student name is null"
+    }
+  }
+}

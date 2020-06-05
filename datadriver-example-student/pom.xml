@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <artifactId>datadriver-example-student</artifactId>
+    <packaging>jar</packaging>
+    <version>${example.version}</version>
+    <description>学生模块</description>
+    <parent>
+        <artifactId>datadriver-spring-boot-example-root</artifactId>
+        <groupId>com.datadriver.boot</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    
+    <build>
+        <!--配置Maven 对resource文件 过滤 -->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <!--web jar-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>META-INF/resources/</targetPath>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.datadriver.boot</groupId>
+            <artifactId>datadriver-example-base</artifactId>
+            <version>${example.version}</version>
+        </dependency>
+    </dependencies>
+</project>
