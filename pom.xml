@@ -47,7 +47,7 @@
         <plugin.maven-dependency>3.0.0</plugin.maven-dependency>
         <skipTests>true</skipTests>
         <!-- junit -->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <!-- spring -->
         <spring.boot.version>1.5.6.RELEASE</spring.boot.version>
         <!-- httpclient -->
