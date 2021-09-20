@@ -81,7 +81,7 @@
         <!-- quartz -->
         <org.quartz.version>2.3.0</org.quartz.version>
         <!-- shiro -->
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.8.0</shiro.version>
         <cglib.version>3.2.5</cglib.version>
         <pac4j.version>2.1.0</pac4j.version>
         <pac4j.buji.version>3.0.0</pac4j.buji.version>
